@@ -6,13 +6,15 @@ import {
   errorHandler,
 } from "./middlewares/error-handler.middleware.js";
 import route from "./routes/index.js";
+import { connectDb } from "./configs/dbConfig.js";
 
 dotenv.config({ path: ".env" });
 
-const PORT = process.env.PORT;
-const HOST = process.env.HOST;
+const PORT = process.env.DATABASE_PORT;
+const HOST = process.env.DATABASE_URL;
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,5 +30,6 @@ app.listen(PORT, HOST, (err) => {
   } else {
     console.log(`Server listening on PORT ${PORT}`);
     console.log(`Press CTRL+C quit`);
+    connectDb();
   }
 });
