@@ -1,0 +1,17 @@
+.user__form-container {
+    font-size: 14px;
+}
+.form__header {
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+.user__form-body {
+    border: 1px solid #eee;
+    padding: 15px 20px 30px;
+}
+.user_form-heading {
+    margin-bottom: 30px;
+}
+.ant-form-item-explain-error {
+    font-size: 12px ;
+}
