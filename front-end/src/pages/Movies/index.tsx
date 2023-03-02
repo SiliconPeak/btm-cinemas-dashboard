@@ -1,4 +1,4 @@
-import { FC, ReactElement } from "../lib/types";
+import { FC, ReactElement } from "../../lib/types";
 
 const Movies:FC =  ():ReactElement => {
     return (
