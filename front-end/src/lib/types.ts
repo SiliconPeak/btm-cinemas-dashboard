@@ -12,3 +12,9 @@ export interface NavigateFunction {
       ): void;
       (delta: number): void;
 }
+export interface ColumnDataType {
+  key:React.Key;
+  name:string,
+  email:string,
+  role:string
+}
