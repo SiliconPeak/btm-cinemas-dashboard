@@ -1,7 +1,7 @@
 import { createElement,useState } from "react";
 import { Outlet,useNavigate,Link} from "react-router-dom";
-import type { FC, ReactElement } from "../lib/types";
-import { NavigateFunction } from "../lib/types";
+import type { FC, ReactElement } from "../../lib/types";
+import { NavigateFunction } from "../../lib/types";
 import {Avatar, Collapse, Layout as AntLayout,Menu,Popover,theme} from "antd";
 import {KeyOutlined, LoginOutlined, MenuFoldOutlined, MenuUnfoldOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined} from "@ant-design/icons";
 const {Header,Sider,Content} = AntLayout;
@@ -14,9 +14,6 @@ const content:ReactElement = (
 const Layout:FC = ():ReactElement => {
     const [collapsed,setCollapsed] = useState<boolean>(false);
     const navigate:NavigateFunction = useNavigate();
-    // const {
-    //     token: {colorBgContainer}
-    // } = theme.useToken();
     return (
         <AntLayout style={{
             height:"100vh"

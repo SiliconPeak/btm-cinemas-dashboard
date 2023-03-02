@@ -1,9 +1,9 @@
-import { FC, ReactElement } from "../lib/types";
+import { FC, ReactElement } from "../../lib/types";
 
 const User:FC = ():ReactElement => {
     return (
         <>
-          This is user settings page
+          This is bimal settings page
         </>
     );
 };
