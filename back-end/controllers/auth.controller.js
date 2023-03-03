@@ -53,7 +53,10 @@ export const loginUser = async (req, res, next) => {
         roleId: user.roleId,
         name: user.usrName,
       },
-      JWT_SECRET.VAL
+      JWT_SECRET.VAL,
+      {
+        expiresIn: "1d",
+      }
     );
     res.json({
       result: {

@@ -5,7 +5,8 @@ export const getAllUsers = async (req, res, next) => {
   try {
     const user = await User.findAll();
     //const user = await User.findAll({ include: [{ model: User, as: "user" }] });
-    res.json(apiResponse(user, true, "User fetched"));
+    //res.json(apiResponse(user, true, "User fetched"));
+    res.json(200, user);
   } catch (error) {
     next(error);
   }
