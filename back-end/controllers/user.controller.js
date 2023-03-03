@@ -4,6 +4,7 @@ import { User } from "../models/user.model.js";
 export const getAllUsers = async (req, res, next) => {
   try {
     const user = await User.findAll();
+    //const user = await User.findAll({ include: [{ model: User, as: "user" }] });
     res.json(apiResponse(user, true, "User fetched"));
   } catch (error) {
     next(error);
