@@ -28,3 +28,26 @@ export const registraterValidator = [
   check("roleId", "Role is required").trim().notEmpty(),
   check("status", "Status is required").trim().notEmpty(),
 ];
+
+
+
+export const userUpdateValidator = [
+  body("usrName").default(undefined),
+  body("usrEmail").default(undefined),
+  body("status").default(undefined),
+  body("roleId").default(undefined),
+
+  check("usrName", "Name is required")
+    .trim()
+    .notEmpty()
+    .isLength({ min: 3, max: 32 })
+    .withMessage("Name must be between 3 to 32 characters"),
+  check("usrEmail", "Enter valid email")
+    .trim()
+    .notEmpty()
+    .isEmail()
+    .withMessage("Must be valid email address"),
+
+  check("roleId", "Role is required").trim().notEmpty(),
+  check("status", "Status is required").trim().notEmpty(),
+];

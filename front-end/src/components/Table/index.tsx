@@ -3,16 +3,18 @@ import {Table as AntTable, Tag,Button, Space} from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { ColumnDataType } from "../../lib/types";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { useEffect, useState } from "react";
+import { getUsers } from "../../services/user.service";
 const columns:ColumnsType<ColumnDataType> = [
     {
         title:'Full Name',
-        dataIndex:'name',
-        key:'name'
+        dataIndex:'usrName',
+        key:'usrName'
     },
     {
         title:'Email',
-        dataIndex:'email',
-        key:'email'
+        dataIndex:'usrEmail',
+        key:'usrEmail'
     },
     {
         title:'Role',
@@ -39,16 +41,32 @@ const columns:ColumnsType<ColumnDataType> = [
         )
     }
 ];
-const data:ColumnDataType[] = [];
-for(let i=0; i< 100;i++) {
-    data.push({
-        key:i,
-        name:`Bimal${i}`,
-        email:`bimalmagar${i}@gmail.com`,
-        role:'Admin'
-    });
-}
+// const data:ColumnDataType[] = [];
+// for(let i=0; i< 100;i++) {
+//     data.push({
+//         key:i,
+//         name:`Bimal${i}`,
+//         email:`bimalmagar${i}@gmail.com`,
+//         role:'Admin'
+//     });
+// }
+
+
+
 const Table:FC = ():ReactElement => {
+const [data,setData] = useState();
+const getAllUsers = async()=>{
+    const users = await getUsers();
+    console.log("response:",users);
+    setData(users?.data);
+
+}
+
+useEffect(()=>{
+getAllUsers();
+
+},[])
+
     return (
           <AntTable columns={columns} dataSource={data} size="large" scroll={{y:350}} bordered/>
     )
