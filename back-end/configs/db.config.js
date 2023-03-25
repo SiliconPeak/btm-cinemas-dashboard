@@ -32,6 +32,7 @@ export const connectDb = async () => {
       console.info("Database connected.");
     })
     .catch((err) => {
-      console.error("ERROR - Unable to connect to the database:", err);
+      //console.error("ERROR - Unable to connect to the database:", err);
+      console.error("ERROR - Unable to connect to the database");
     });
 };

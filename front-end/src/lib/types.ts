@@ -14,7 +14,8 @@ export interface NavigateFunction {
 }
 export interface ColumnDataType {
   key:React.Key;
-  name:string,
+  fullname:string,
   email:string,
-  role:string
+  role:string,
+  userId:number
 }
