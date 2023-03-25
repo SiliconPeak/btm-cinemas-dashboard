@@ -10,8 +10,8 @@ import { authCheck } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 router.route("/")
-  .get(authCheck, getAllRoles)
-  .post(authCheck, createRoles);
+  .get(getAllRoles)
+  .post(createRoles);
 
 router.route("/:id")
   .get(authCheck, getRolesById)
