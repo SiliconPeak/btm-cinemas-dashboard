@@ -21,36 +21,37 @@
 //     }
 //   } catch (error) {}
 // };
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZUlkIjoyLCJuYW1lIjoiYmltIiwiaWF0IjoxNjc5NjgzNjIxLCJleHAiOjE2Nzk3NzAwMjF9.ttJoirVo867_2xVX3_dkLpEnLuFL3gkHAFAf4XnAwMI';
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZUlkIjoxLCJuYW1lIjoiQmltYWwgTWFnYXIiLCJpYXQiOjE2Nzk4MDE1NzgsImV4cCI6MTY3OTg4Nzk3OH0.umm13EtY0BvqXC5FFx8GqaA4UaRYxD-KFIAwDCQTXDk";
 
 export const getUsers = async () => {
   try {
-    const response = await fetch('http://localhost:9003/api/v1/user',{
-      method:'GET',
-      headers:{
-        "authorization":`Bearer ${token}`
-      }
+    const response = await fetch("http://localhost:9003/api/v1/user", {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
     });
     const data = await response.json();
     console.log(data);
     return data;
-  } catch(err) {
+  } catch (err) {
     alert(err);
   }
 };
 
-export const registerUser = async (body:any) => {
+export const registerUser = async (body: any) => {
   try {
-    const response = await fetch('http://localhost:9003/api/v1/register',{
-      method:'POST',
-      headers:{
-        "Content-Type":"application/json"
+    const response = await fetch("http://localhost:9003/api/v1/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify(body)
-    })
+      body: JSON.stringify(body),
+    });
     const data = await response.json();
     return data;
-  } catch(err) {
+  } catch (err) {
     alert(err);
   }
-}
+};
