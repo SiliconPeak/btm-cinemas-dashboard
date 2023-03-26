@@ -7,10 +7,14 @@ import { JWT_SECRET } from "../configs/jwt.config.js";
 export const registraterUser = async (req, res, next) => {
   try {
     const data = req.body;
-    console.log(data);
+    const usrEmail = data.usrEmail;
     const role = await Role.findByPk(data.roleId);
     if (!role) {
       return res.status(404).send({ msg: "Role does not found" });
+    }
+    const userCheck = await User.findOne({ where: { usrEmail } });
+    if (userCheck) {
+      return res.status(403).send({ msg: "Email already exits" });
     }
     if (req.file) {
       data.profileImage = req.file.filename;
