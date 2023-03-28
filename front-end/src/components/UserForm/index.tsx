@@ -50,12 +50,6 @@ const UserForm:FC = ():ReactElement => {
                 navigate("/");
             })
         });
-       
-        
-        // setTimeout(() => {
-           
-        //     setLoading(false);
-        // },2000);
     };
     return (
         <div className="user__form-container">
