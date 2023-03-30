@@ -52,18 +52,24 @@ export const updateUsers = async (req, res, next) => {
     const user = await User.findByPk(id);
     if (!user) return res.status(404).json(apiErrorResponse(404, MESSAGE.USER_NOT));
 
-
     if (req.file) {
       data.profileImage = req.file.filename;
     }
+
     const dataMap = {
       usrName: data.usrName,
       status: data.status,
       profileImage: data.profileImage,
       roleId: data.roleId
     }
+
     await User.update(dataMap, { where: { id: user.id } });
-    deleteImage(user.profileImage);
+
+    if (user.profileImage && req.file) {
+      deleteImage(user.profileImage);
+    }
+
+
     res.status(200).json(apiSuccessResponse(200, MESSAGE.USER_UPDATE));
 
   } catch (error) {
