@@ -49,6 +49,7 @@ export const updateUsers = async (req, res, next) => {
   try {
     const id = req.params.id;
     const data = req.body;
+    console.log("Data:", data);
     const user = await User.findByPk(id);
     if (!user) return res.status(404).json(apiErrorResponse(404, MESSAGE.USER_NOT));
 
@@ -59,8 +60,9 @@ export const updateUsers = async (req, res, next) => {
     const dataMap = {
       usrName: data.usrName,
       status: data.status,
-      profileImage: data.profileImage,
-      roleId: data.roleId
+      // email: data.email,
+      //profileImage: data.profileImage,
+      roleId: parseInt(data.roleId)
     }
 
     await User.update(dataMap, { where: { id: user.id } });

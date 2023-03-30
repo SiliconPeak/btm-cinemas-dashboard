@@ -52,17 +52,17 @@ const UserEditForm:FC = ():ReactElement => {
         if(values) {
            let editBody = {
             usrName:values.fullname,
-            usrEmail:values.email,
+          // usrEmail:values.email,
             status:values.status,
-            roleId:values.roleId.toString(),
-            profileImage:null
+            roleId:values.roleId,
+            //profileImage:null
            };
            
             const editUser = async () => {
                     alert(userId);
                     alert(JSON.stringify(editBody,null,2));
                     try {
-                        const response = await editUserById(userId,editBody);
+                        const response = await editUserById(editBody,userId);
                         console.log('edit user',response);
                         if(response.status === 200) {
                             alert("User edited successfully")
@@ -114,7 +114,7 @@ const UserEditForm:FC = ():ReactElement => {
                                 <Input size="small"/>
                             </Form.Item>
                         </Col>
-                        <Col className="gutter-row" span={8}>
+                        {/* <Col className="gutter-row" span={8}>
                             <Form.Item
                             label="Email address"
                             name="email"
@@ -122,7 +122,7 @@ const UserEditForm:FC = ():ReactElement => {
                             >
                                 <Input type="emai" size="small"/>
                             </Form.Item>
-                        </Col>
+                        </Col> */}
                         <Col span={8}>
                             <Form.Item
                             label="status"
@@ -134,7 +134,7 @@ const UserEditForm:FC = ():ReactElement => {
                                     <Option value="inactive">Inactive</Option>
                                 </Select>
                             </Form.Item>
-                        </Col>
+                        </Col> 
                         <Col span={8}>
                             <Form.Item
                             label="Role"

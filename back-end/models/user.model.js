@@ -22,8 +22,7 @@ export const User = sequelize.define(
       unique: true,
     },
     status: {
-      type: DataTypes.ENUM("active", "inactive"),
-      defaultValue: "inactive",
+      type: DataTypes.STRING(30),
     },
     profileImage: {
       type: DataTypes.STRING,
@@ -32,7 +31,7 @@ export const User = sequelize.define(
   },
   {
     timestamps: true,
-    freezeTableName: true,
+    //freezeTableName: true,
   }
 );
 //sequelize.sync({ alter: true, force: true });
