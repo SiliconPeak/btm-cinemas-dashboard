@@ -23,3 +23,28 @@
   display: flex;
   align-items: center;
 }
+.login-signup {
+  position: relative;
+  height: 100vh;
+}
+.login-signup__container{
+  padding:20px;
+  border:1px solid #bbb;
+  width: 40%;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  border-radius: 5px;
+}
+.login-form,.signup-form {
+  width:70%;
+  margin: 0 auto;
+}
+.login-form-button,.signup-form-button {
+  width:100%;
+}
+.forgot-password-link {
+  width: 100%;
+  text-align: end;
+}

@@ -27,13 +27,17 @@ const UserEditForm:FC = ():ReactElement => {
     useEffect(() => {
         const getUser = async () => {
             try {
-                const {user} = await getUserById(userId);
-                form.setFieldsValue({
-                    fullname:user.usrName,
-                    email:user.usrEmail,
-                    status:user.status,
-                    roleId:user.roleId,
-                })
+                const user = await getUserById(userId);
+                if(user.status === 200){
+                    form.setFieldsValue({
+                        fullname:user.data.usrName,
+                        email:user.data.usrEmail,
+                        status:user.data.status,
+                        roleId:user.data.roleId,
+                    })
+                } else {
+                    throw 'User not found';
+                }
             }catch(err) {
                 alert(err);
             }
@@ -46,20 +50,32 @@ const UserEditForm:FC = ():ReactElement => {
     const onFinish = (values:any) => {
         alert("editting");
         if(values) {
-            setLoading(true);
+           let editBody = {
+            usrName:values.fullname,
+            usrEmail:values.email,
+            status:values.status,
+            roleId:values.roleId.toString(),
+            profileImage:null
+           };
+           
             const editUser = async () => {
                     alert(userId);
-                    alert(JSON.stringify(values,null,2));
+                    alert(JSON.stringify(editBody,null,2));
                     try {
-                        const response = await editUserById(userId,{...values,profileImage:null});
-                        alert("Eddititng inside")
-                        console.log("res",response);
+                        const response = await editUserById(userId,editBody);
+                        console.log('edit user',response);
+                        if(response.status === 200) {
+                            alert("User edited successfully")
+                        } else {
+                            throw "Error on updating user";
+                        }
+                        
                     }catch(err) {
-                        message.error('Error on registering user!!',2);
+                        alert(err);
                     }
                    
-                }
-                editUser();
+            };
+            editUser();
         }
     }
 

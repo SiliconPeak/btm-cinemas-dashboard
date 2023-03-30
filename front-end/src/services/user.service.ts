@@ -1,7 +1,7 @@
 
 
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsInJvbGVJZCI6MiwibmFtZSI6ImhlbGxvIiwiaWF0IjoxNjgwMDEyOTMwLCJleHAiOjE2ODAwOTkzMzB9.VARGr9idTxZV5GlYOc5qM5PybbHMi52tURHtpvCiEHo';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsInJvbGVJZCI6MiwibmFtZSI6ImhlbGxvIiwiaWF0IjoxNjgwMTgxMDUwLCJleHAiOjE2ODAyNjc0NTB9.FazJk3pzaSxpNSd_61HXCtaYUjXVU4jzm8sPpCEgHf8';
 
 
 export const getUsers = async () => {

@@ -96,8 +96,9 @@ const Table:FC = ():ReactElement => {
     const getAllUsers = async () => {
         try {
             const users = await getUsers();
-            if(users) {
-                setData(users);
+            console.log(users);
+            if(users.status === 200) {
+                setData(users.data);
             } else {
                 throw "User not found";
             }
