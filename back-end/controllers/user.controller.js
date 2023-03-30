@@ -1,13 +1,15 @@
-import { deleteImage } from "../helpers/functions.js";
+import { apiErrorResponse, apiListResponse, apiSuccessResponse, deleteImage } from "../helpers/functions.js";
 import { User } from "../models/user.model.js";
 import { Role } from "../models/role.model.js";
+import { MESSAGE } from "../helpers/response.message.js";
 
 
 //User List
 export const getAllUsers = async (req, res, next) => {
   try {
     const user = await User.findAll({ include: [{ model: Role, as: "role" }] });
-    res.status(200).json(user);
+    if (!user) return res.status(404).json(apiErrorResponse(404, MESSAGE.USER_NOT));
+    res.status(200).json(apiListResponse(200, user, MESSAGE.USER));
   } catch (error) {
     next(error);
   }
@@ -19,9 +21,9 @@ export const getUserById = async (req, res, next) => {
     const id = req.params.id;
     const user = await User.findByPk(id, { include: [{ model: Role, as: "role" }] });
 
-    if (!user) return res.status(403).json({ msg: "User not found" });
+    if (!user) return res.status(404).json(apiErrorResponse(404, MESSAGE.USER_NOT));
 
-    res.status(200).json({ user });
+    res.status(200).json(apiListResponse(200, user, MESSAGE.USER));
   } catch (error) {
     console.log(error);
   }
@@ -32,10 +34,10 @@ export const deleteUsers = async (req, res, next) => {
   try {
     const id = req.params.id;
     const user = await User.findByPk(id);
-    if (!user) return res.status(403).json({ msg: "User not found" });
+    if (!user) return res.status(404).json(apiErrorResponse(404, MESSAGE.USER_NOT));
     await user.destroy();
     deleteImage(user.profileImage);
-    res.status(200).json({ msg: "User has been deleted" });
+    res.status(200).json(apiSuccessResponse(200, MESSAGE.USER_DELETE));
 
   } catch (error) {
     console.log(error);
@@ -48,21 +50,21 @@ export const updateUsers = async (req, res, next) => {
     const id = req.params.id;
     const data = req.body;
     const user = await User.findByPk(id);
-    if (!user) return res.status(403).json({ msg: "User does not found" });
+    if (!user) return res.status(404).json(apiErrorResponse(404, MESSAGE.USER_NOT));
+
 
     if (req.file) {
       data.profileImage = req.file.filename;
     }
     const dataMap = {
       usrName: data.usrName,
-      usrEmail: data.usrEmail,
       status: data.status,
       profileImage: data.profileImage,
       roleId: data.roleId
     }
     await User.update(dataMap, { where: { id: user.id } });
     deleteImage(user.profileImage);
-    res.status(200).json({ msg: "User has been updated" });
+    res.status(200).json(apiSuccessResponse(200, MESSAGE.USER_UPDATE));
 
   } catch (error) {
     console.log(error);

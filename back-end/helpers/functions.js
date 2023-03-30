@@ -20,3 +20,27 @@ export const deleteImage = (image) => {
         }
     })
 }
+export const apiListResponse = (status = null, data = null, message = null) => {
+    const response = {
+        status: status,
+        data: data,
+        message: message
+    };
+    return response;
+}
+
+export const apiErrorResponse = (status = null, error = null) => {
+    const response = {
+        status: status,
+        error: error
+    }
+    return response;
+}
+
+export const apiSuccessResponse = (status = null, message = null) => {
+    const response = {
+        status: status,
+        message: message
+    }
+    return response;
+}
