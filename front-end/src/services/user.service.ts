@@ -22,7 +22,7 @@
 //   } catch (error) {}
 // };
 const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZUlkIjoxLCJuYW1lIjoiQmltYWwgTWFnYXIiLCJpYXQiOjE2Nzk4MDE1NzgsImV4cCI6MTY3OTg4Nzk3OH0.umm13EtY0BvqXC5FFx8GqaA4UaRYxD-KFIAwDCQTXDk";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsInJvbGVJZCI6MiwibmFtZSI6ImhlbGxvIiwiaWF0IjoxNjgwMTgxMDUwLCJleHAiOjE2ODAyNjc0NTB9.FazJk3pzaSxpNSd_61HXCtaYUjXVU4jzm8sPpCEgHf8";
 
 export const getUsers = async () => {
   try {
