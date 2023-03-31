@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
 import { Tabs } from 'antd';
-import type { SizeType } from 'antd/es/config-provider/SizeContext';
 import { FC, ReactElement } from "../../lib/types";
 import Login from '../Login';
 import Signup from '../Signup';
