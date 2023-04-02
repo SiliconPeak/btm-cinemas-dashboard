@@ -7,7 +7,8 @@ import { MESSAGE } from "../helpers/response.message.js";
 //User List
 export const getAllUsers = async (req, res, next) => {
   try {
-    const user = await User.findAll({ include: [{ model: Role, as: "role" }] });
+    const attributes = ['id', 'usrName', 'usrEmail', 'status', 'profileImage', 'roleId', 'createdAt', 'updatedAt'];
+    const user = await User.findAll({ attributes, include: [{ model: Role, as: "role" }] });
     if (!user) return res.status(404).json(apiErrorResponse(404, MESSAGE.USER_NOT));
     res.status(200).json(apiListResponse(200, user, MESSAGE.USER));
   } catch (error) {
@@ -19,7 +20,12 @@ export const getAllUsers = async (req, res, next) => {
 export const getUserById = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const user = await User.findByPk(id, { include: [{ model: Role, as: "role" }] });
+    const attributes = ['id', 'usrName', 'usrEmail', 'status', 'profileImage', 'roleId', 'createdAt', 'updatedAt'];
+    const user = await User.findOne({
+      where: { id: id }, attributes, include: [{
+        model: Role, as: "role"
+      }]
+    });
 
     if (!user) return res.status(404).json(apiErrorResponse(404, MESSAGE.USER_NOT));
 
@@ -49,10 +55,9 @@ export const updateUsers = async (req, res, next) => {
   try {
     const id = req.params.id;
     const data = req.body;
-    console.log("Data:", data);
     const user = await User.findByPk(id);
     if (!user) return res.status(404).json(apiErrorResponse(404, MESSAGE.USER_NOT));
-
+    console.log("User Data: ", user);
     if (req.file) {
       data.profileImage = req.file.filename;
     }
@@ -64,7 +69,6 @@ export const updateUsers = async (req, res, next) => {
       //profileImage: data.profileImage,
       roleId: parseInt(data.roleId)
     }
-
     await User.update(dataMap, { where: { id: user.id } });
 
     if (user.profileImage && req.file) {

@@ -9,6 +9,7 @@ export const MESSAGE = {
 
     USER: "User fetch",
     USER_NOT: "User does not found",
+    USER_NOT_LOGIN: "User not login",
     USER_DELETE: "User has been deleted",
     USER_UPDATE: "User has been updated",
     USER_ERROR_UPDATE: "User does not update",

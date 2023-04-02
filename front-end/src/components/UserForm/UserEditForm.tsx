@@ -62,8 +62,7 @@ const UserEditForm:FC = ():ReactElement => {
                     alert(userId);
                     alert(JSON.stringify(editBody,null,2));
                     try {
-                        const response = await editUserById(editBody,userId);
-                        console.log('edit user',response);
+                        const response = await editUserById(userId,editBody);                      
                         if(response.status === 200) {
                             alert("User edited successfully")
                         } else {

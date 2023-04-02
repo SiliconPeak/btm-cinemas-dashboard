@@ -1,5 +1,5 @@
 const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZUlkIjoxLCJuYW1lIjoiRHVyZ2VuIFJhaSIsImlhdCI6MTY4MDIwMDgzNywiZXhwIjoxNjgwMjg3MjM3fQ.VJb896Dn3-uavFapocyU9hmoEAjikBMGpAdCJFh2qQE";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZUlkIjoxLCJuYW1lIjoiRHVyZ2VuIFJhaSIsImlhdCI6MTY4MDMzNjkzNCwiZXhwIjoxNjgwNDIzMzM0fQ.L9XrUcXGdAmdT7ngW9zdlqRpdShHnLwZ3xZ51R_ifMU";
 
 export const getUsers = async () => {
   try {
@@ -48,12 +48,14 @@ export const getUserById = async (id: any) => {
   }
 };
 
-export const editUserById = async (body: any, id: any) => {
+export const editUserById = async (id: any, body: any) => {
   try {
+    console.log("Body: ", JSON.stringify(body));
     const response = await fetch(`http://localhost:9003/api/v1/user/${id}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     });
