@@ -6,12 +6,18 @@ import { User } from "./user.model.js";
 export const Role = sequelize.define(
   "roles",
   {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
     title: {
       type: DataTypes.STRING,
       unique: true,
     },
     status: {
-      type: DataTypes.ENUM("active", "inactive"),
+      type: DataTypes.STRING(50),
       defaultValue: "inactive",
     },
   },
@@ -24,14 +30,13 @@ Role.hasMany(User, {
   foreignKey: "roleId",
   as: "user",
   allowNull: true,
-  onUpdate: "CASCADE",
 });
 
 User.belongsTo(Role, {
   foreignKey: "roleId",
   as: "role",
   allowNull: true,
-  onUpdate: "CASCADE",
+
 });
 
 //sequelize.sync({ alter: true, force: true });

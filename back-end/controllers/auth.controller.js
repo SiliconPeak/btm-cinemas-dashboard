@@ -37,11 +37,13 @@ export const registraterUser = async (req, res, next) => {
 export const loginUser = async (req, res, next) => {
   try {
     const { usrEmail, usrPassword } = req.body;
+
     const user = await User.findOne({
-      where: { usrEmail },
+      where: { usrEmail: usrEmail },
       include: [{ model: Role, as: "role" }],
     });
 
+    if (user.status == 'inactive') return res.status(403).json(apiErrorResponse(403, MESSAGE.USER_NOT_LOGIN));
     if (!user) return res.status(404).json(apiErrorResponse(404, MESSAGE.USER_NOT));
 
     const isValid = bcrypt.compareSync(usrPassword, user.usrPassword);

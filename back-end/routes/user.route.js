@@ -11,7 +11,7 @@ router.route("/")
 router.route("/:id")
     .get(authCheck, getUserById)
     .delete(authCheck, deleteUsers)
-    .put(authCheck, uploader.single("profileImage"),
-        userUpdateValidator, updateUsers);
+    .put(authCheck,
+        userUpdateValidator, uploader.single("profileImage"), updateUsers);
 
 export default router;
