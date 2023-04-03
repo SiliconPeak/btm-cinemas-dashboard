@@ -1,5 +1,5 @@
 const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZUlkIjoxLCJuYW1lIjoiRHVyZ2VuIFJhaSIsImlhdCI6MTY4MDMzNjkzNCwiZXhwIjoxNjgwNDIzMzM0fQ.L9XrUcXGdAmdT7ngW9zdlqRpdShHnLwZ3xZ51R_ifMU";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsInJvbGVJZCI6MiwibmFtZSI6ImhlbGxvIiwiaWF0IjoxNjgwNTM3NDE0LCJleHAiOjE2ODA2MjM4MTR9.k2_ltJfeNapPb2ummH5juqGk-i-k5WgIfEi9BTU6c6U";
 
 export const getUsers = async () => {
   try {

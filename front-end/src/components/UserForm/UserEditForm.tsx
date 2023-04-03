@@ -10,7 +10,7 @@ import {
     Button,
     message
 } from "antd";
-import {Link, useLoaderData, useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { editUserById, getUserById } from "../../services/user.service";
 const {Title} = Typography;
@@ -48,33 +48,37 @@ const UserEditForm:FC = ():ReactElement => {
     
 
     const onFinish = (values:any) => {
-        alert("editting");
         if(values) {
            let editBody = {
             usrName:values.fullname,
-          // usrEmail:values.email,
             status:values.status,
             roleId:values.roleId,
-            //profileImage:null
            };
-           
-            const editUser = async () => {
-                    alert(userId);
-                    alert(JSON.stringify(editBody,null,2));
+           messageApi.open({
+            type:'loading',
+            content:'Updating...',
+                duration:2.5
+            }).then(() => {
+                 const editUser = async () => {
                     try {
                         const response = await editUserById(userId,editBody);                      
                         if(response.status === 200) {
-                            alert("User edited successfully")
+                           message.success('User updated successfully!!',1,() => {
+                             navigate('/');
+                           });
                         } else {
                             throw "Error on updating user";
                         }
                         
                     }catch(err) {
-                        alert(err);
+                       message.error('Something went wrong!!',2);
                     }
                    
-            };
-            editUser();
+                };
+                editUser();
+               
+            })
+            
         }
     }
 
@@ -113,15 +117,6 @@ const UserEditForm:FC = ():ReactElement => {
                                 <Input size="small"/>
                             </Form.Item>
                         </Col>
-                        {/* <Col className="gutter-row" span={8}>
-                            <Form.Item
-                            label="Email address"
-                            name="email"
-                            rules={[{required:true,message:"Please enter email."}]}
-                            >
-                                <Input type="emai" size="small"/>
-                            </Form.Item>
-                        </Col> */}
                         <Col span={8}>
                             <Form.Item
                             label="status"
