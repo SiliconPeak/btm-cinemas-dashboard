@@ -16,11 +16,6 @@ const LoginSignup:FC = ():ReactElement => {
                         label:'Login',
                         key:'login',
                         children:<Login/>
-                    },
-                    {
-                        label:'Sign Up',
-                        key:'signup',
-                        children:<Signup/>
                     }
                 ]}
             />

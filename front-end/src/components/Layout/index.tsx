@@ -2,14 +2,18 @@ import { createElement,useState } from "react";
 import { Outlet,useNavigate,Link} from "react-router-dom";
 import type { FC, ReactElement } from "../../lib/types";
 import { NavigateFunction } from "../../lib/types";
-import {Avatar, Layout as AntLayout,Menu,Popover} from "antd";
+import {Avatar, Layout as AntLayout,Menu,Popover,Button} from "antd";
 import {KeyOutlined, LoginOutlined, MenuFoldOutlined, MenuUnfoldOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined} from "@ant-design/icons";
+import authService from "../../services/auth.services";
 const {Header,Sider,Content} = AntLayout;
 const content:ReactElement = (
-   <ul style={{listStyle:"none",padding:0}}>
-      <li className="user__actions--list"><Link to="/change-password"><KeyOutlined/> &nbsp;Change Password</Link></li>
-      <li className="user__actions--list"><Link to="/signout"><LoginOutlined/> &nbsp;Sign Out</Link></li>
-   </ul>
+        <ul style={{listStyle:"none",padding:0}}>
+           <li className="user__actions--list"><Link to="/change-password"><KeyOutlined/> &nbsp;Change Password</Link></li>
+           <li className="user__actions--list"><Button style={{padding:0}} type="link" onClick={() => {
+               authService.logout();
+               window.location.href = "/";
+             }}><LoginOutlined/> &nbsp;Sign Out</Button></li>
+        </ul>
 );
 const Layout:FC = ():ReactElement => {
     const [collapsed,setCollapsed] = useState<boolean>(false);

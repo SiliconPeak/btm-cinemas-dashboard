@@ -1,3 +1,5 @@
+import authService from "./auth.services";
+
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzYsInJvbGVJZCI6MiwibmFtZSI6ImhlbGxvIiwiaWF0IjoxNjgwNTM3NDE0LCJleHAiOjE2ODA2MjM4MTR9.k2_ltJfeNapPb2ummH5juqGk-i-k5WgIfEi9BTU6c6U";
 
@@ -5,9 +7,7 @@ export const getUsers = async () => {
   try {
     const response = await fetch("http://localhost:9003/api/v1/user", {
       method: "GET",
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
+      headers: authService.authHeader()
     });
     const data = await response.json();
     console.log(data);
@@ -37,9 +37,7 @@ export const getUserById = async (id: any) => {
   try {
     const response = await fetch(`http://localhost:9003/api/v1/user/${id}`, {
       method: "GET",
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
+      headers: authService.authHeader()
     });
     const data = await response.json();
     return data;
@@ -53,10 +51,7 @@ export const editUserById = async (id: any, body: any) => {
     console.log("Body: ", JSON.stringify(body));
     const response = await fetch(`http://localhost:9003/api/v1/user/${id}`, {
       method: "PUT",
-      headers: {
-        authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
+      headers: authService.authHeader(),
       body: JSON.stringify(body),
     });
     const data = await response.json();
@@ -71,9 +66,7 @@ export const deleteUser = async (id: any) => {
   try {
     const response = await fetch(`http://localhost:9003/api/v1/user/${id}`, {
       method: "DELETE",
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
+      headers: authService.authHeader(),
     });
     const data = await response.json();
     return data;
