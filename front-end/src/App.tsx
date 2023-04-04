@@ -9,7 +9,6 @@ import UserForm from "./components/UserForm";
 import UserEditForm from "./components/UserForm/UserEditForm";
 import LoginSignup from "./components/Container/LoginSignup";
 import authService from "./services/auth.services";
-const isLoggedIn = false;
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout/>}>

@@ -17,6 +17,15 @@ export const MESSAGE = {
     USER_REGISTER: "User has been created",
     USER_ERROR_REGISTER: "User can not register",
     USER_LOGIN: "User login succssfully",
-    USER_PWD_ERROR: "Password does not match"
+    USER_PWD_ERROR: "Password does not match",
+
+    GENRES_FETCH: "Genres fetch",
+    GENRES_NOT_FOUND: "Genres does not found",
+    GENRES_DELETE: "Genres has been deleted",
+    GENRES_NOT_DELETE: "Genres not delete",
+    GENRES_UPDATE: "Genres has been updated",
+    GENRES_NOT_UPDATE: "Genres does not update",
+    GENRES_ADD: "Genres has been created",
+    GENRES_DUPLICATE: "Genres already exit",
 
 }
