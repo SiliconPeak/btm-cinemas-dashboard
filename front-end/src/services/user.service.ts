@@ -1,7 +1,6 @@
 import authService from "./auth.services";
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZUlkIjoxLCJuYW1lIjoiRHVyZ2VuIFJhaSIsImlhdCI6MTY4MDYyOTUxNiwiZXhwIjoxNjgwNzE1OTE2fQ.sO5QUVo36yMofWIR10SgA7GftChXyZOFB7RlXODvAn4";
+
 export const getUsers = async () => {
   try {
     const response = await fetch("http://localhost:9003/api/v1/user", {

@@ -21,4 +21,4 @@ export const Genres = sequelize.define(
     timestamps: true,
 });
 
-// sequelize.sync({ after: true, force: true });
+//sequelize.sync({ after: true, force: true });

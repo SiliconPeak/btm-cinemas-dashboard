@@ -9,13 +9,21 @@ import UserForm from "./components/UserForm";
 import UserEditForm from "./components/UserForm/UserEditForm";
 import LoginSignup from "./components/Container/LoginSignup";
 import authService from "./services/auth.services";
+import Genres from "./pages/Genres";
+import {KeyOutlined, LoginOutlined, MenuFoldOutlined, MenuUnfoldOutlined,ExpandAltOutlined, UserOutlined, VideoCameraOutlined} from "@ant-design/icons";
+import GenreForm from "./components/Form/GenreForm";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout/>}>
-      <Route index element={<User/>}/>
+      <Route index element={<User title="Users List" icon={<UserOutlined/>} iconText="Add User" iconUrl="/users/create"/>}/>
       <Route path="/users/create" element={<UserForm/>}/>
       <Route path="/user/edit/:id" element={<UserEditForm/>}/>
       <Route path="/movies" element={<Movies/>}/>
+      <Route path="/genres" element={
+          <Genres title="Genres List" icon={<ExpandAltOutlined/>} iconText="Add Genre" iconUrl="/genres/create"/>}
+      />
+      <Route path="/genres/create" element={<GenreForm/>}/>
     </Route>
   )
 );

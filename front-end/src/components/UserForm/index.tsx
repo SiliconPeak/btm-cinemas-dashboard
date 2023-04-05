@@ -52,16 +52,16 @@ const UserForm:FC = ():ReactElement => {
         });
     };
     return (
-        <div className="user__form-container">
+        <div className="page__form--container">
             {contextHolder}
-            <div className="form__header">
+            <div className="page__form--header">
               <Breadcrumb separator=">">
                 <Breadcrumb.Item><Link to="/">User</Link></Breadcrumb.Item>
                 <Breadcrumb.Item>Create</Breadcrumb.Item>
               </Breadcrumb> 
             </div>
-            <div className="user__form-body">
-                <div className="user_form-heading">
+            <div className="page__form--body">
+                <div className="page_form-heading">
                     <Title level={4}> Create user</Title>
                 </div> 
                 <Form

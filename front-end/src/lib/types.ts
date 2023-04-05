@@ -19,3 +19,14 @@ export interface ColumnDataType {
   role:string,
   id:any
 }
+
+export interface GenreColumnType {
+  name:string;
+  status:string;
+  id:string;
+}
+
+export interface  GenreCreateType {
+  name:string;
+  status:string;
+}
