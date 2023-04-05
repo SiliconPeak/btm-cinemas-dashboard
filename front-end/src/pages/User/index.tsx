@@ -5,19 +5,9 @@ import { UserAddOutlined } from "@ant-design/icons";
 import { Link} from "react-router-dom";
 import "./User.css";
 import Table from "../../components/Table";
-const {Title} = Typography;
+import withPageListLayout from "../../components/HOC/withPageListLayout";
 const User:FC = ():ReactElement => {
-    return (
-        <div className="user__settings">
-            <div className="user__settings-header">
-                <Title level={4}>Users List</Title>
-                <Button type="primary" icon={<UserAddOutlined style={{fontSize:"18px"}}/>}>
-                    <Link to="/users/create">Add User</Link>
-                </Button>
-            </div>
-            <Table/>
-        </div>
-    );
+    return <Table/>;
 };
 
-export default User;
+export default withPageListLayout(User)
