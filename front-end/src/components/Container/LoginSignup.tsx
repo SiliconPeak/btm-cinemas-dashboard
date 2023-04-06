@@ -1,7 +1,6 @@
 import { Tabs } from 'antd';
 import { FC, ReactElement } from "../../lib/types";
 import Login from '../Login';
-import Signup from '../Signup';
 const LoginSignup:FC = ():ReactElement => {
 
   return (

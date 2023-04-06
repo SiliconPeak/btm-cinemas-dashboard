@@ -1,7 +1,6 @@
 import { ComponentType } from "react";
 import {Link} from "react-router-dom";
-import { Typography,Button,Anchor} from "antd";
-import {UserAddOutlined} from "@ant-design/icons";
+import { Typography,Button} from "antd";
 import { ReactElement } from "../../lib/types";
 interface PageListLayoutProps {
     title:string,

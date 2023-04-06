@@ -3,14 +3,13 @@ import Layout from "./components/Layout";
 import Movies from "./pages/Movies";
 import User from "./pages/User";
 import './App.css';
-import { NavigateFunction } from "./lib/types";
 import { useEffect, useState } from "react";
 import UserForm from "./components/UserForm";
 import UserEditForm from "./components/UserForm/UserEditForm";
 import LoginSignup from "./components/Container/LoginSignup";
 import authService from "./services/auth.services";
 import Genres from "./pages/Genres";
-import {KeyOutlined, LoginOutlined, MenuFoldOutlined, MenuUnfoldOutlined,ExpandAltOutlined, UserOutlined, VideoCameraOutlined} from "@ant-design/icons";
+import {ExpandAltOutlined, UserOutlined} from "@ant-design/icons";
 import GenreForm from "./components/Form/GenreForm";
 
 const router = createBrowserRouter(

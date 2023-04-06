@@ -1,14 +1,12 @@
-import { Breadcrumb, Form, Input, Select,Button,Row,Col,Typography,message} from "antd";
+import { Breadcrumb, Form, Input,Button,Row,Col,Typography,message} from "antd";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FC, GenreCreateType, ReactElement } from "../../lib/types";
-import { registerUser } from "../../services/user.service";
-import {redirect,useNavigate} from "react-router-dom";
+import { GenreCreateType, ReactElement } from "../../lib/types";
+import {useNavigate} from "react-router-dom";
 import { genreServices } from "../../services/genre.services";
-const {Option} = Select;
 const {Title} = Typography;
 
-const GenreForm = ()=> {
+const GenreForm = ():ReactElement=> {
     const [form] = Form.useForm();
     const [messageApi,contextHolder] = message.useMessage();
     const [loading,setLoading] = useState<boolean>(false);
