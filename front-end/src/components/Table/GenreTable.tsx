@@ -1,6 +1,6 @@
 import { Table,Space,Button, Modal, message } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import type { GenreColumnType } from "../../lib/types";
 import { useEffect, useMemo, useState } from "react";
 import { genreServices } from "../../services/genre.services";
@@ -28,6 +28,14 @@ const GenreTable = () => {
             render:(genreid) => {
                 return (
                 <Space size="small">
+                        <Button 
+                            type="primary" 
+                            size="middle" 
+                            icon={<EditOutlined/>}
+                            href={`/genres/edit/${genreid}`}
+                        >
+                            Edit
+                        </Button>
                         <Button 
                             type="primary" 
                             size="middle" 

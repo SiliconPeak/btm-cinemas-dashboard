@@ -46,9 +46,45 @@ const deleteGenre = async (genreid:string) => {
         alert(err);
     }
 };
+const getGenreById =  async (genreid:any) => {
+    try {
+        const res = await fetch(`http://localhost:9003/api/v1/genres/${genreid}`,{
+            method:'GET'
+        });
+        const data = await res.json();
+        if(data && data.status === 200) {
+            return data;
+        }
+    } catch(err) {
+        alert(err);
+    }
+};
+
+const editGenre = async (id:any,body:any) => {
+    try {
+        const res = await fetch(`http://localhost:9003/api/v1/genres/${id}`,{
+            method:'PUT',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(body)
+        });
+        const data = await res.json();
+        console.log(data);
+        if(data && data.status === 200) {
+            return data;
+        } else {
+            throw data.error;
+        }
+    } catch(err) {
+        console.log(err);
+    }
+};
 
 export const genreServices = {
     getAll,
     createGenre,
-    deleteGenre
+    deleteGenre,
+    getGenreById,
+    editGenre
 };

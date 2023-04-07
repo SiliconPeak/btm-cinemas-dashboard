@@ -11,7 +11,7 @@ import authService from "./services/auth.services";
 import Genres from "./pages/Genres";
 import {ExpandAltOutlined, UserOutlined} from "@ant-design/icons";
 import GenreForm from "./components/Form/GenreForm";
-
+import GenreEditForm from "./components/Form/GenreEditForm";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout/>}>
@@ -23,6 +23,7 @@ const router = createBrowserRouter(
           <Genres title="Genres List" icon={<ExpandAltOutlined/>} iconText="Add Genre" iconUrl="/genres/create"/>}
       />
       <Route path="/genres/create" element={<GenreForm/>}/>
+      <Route path="/genres/edit/:id" element={<GenreEditForm/>}/>
     </Route>
   )
 );
