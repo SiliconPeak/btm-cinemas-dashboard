@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../configs/db.config.js";
+import { Person } from "./person.model.js";
 
 
 export const Department = sequelize.define(
@@ -21,16 +22,17 @@ export const Department = sequelize.define(
     timestamps: true,
 });
 
-// Genres.hasMany(Movie, {
-//     foreignKey: 'generId',
-//     as: 'movie',
-//     allowNull: true
-// })
-// Movie.belongsTo(Genres, {
-//     foreignKey: 'generId',
-//     as: 'gener',
-//     allowNull: true
-// })
+Department.hasMany(Person, {
+    foreignKey: "departmentId",
+    as: "person",
+    allowNull: true,
+});
 
+Person.belongsTo(Department, {
+    foreignKey: "departmentId",
+    as: "department",
+    allowNull: true,
+
+});
 // sequelize.sync({ after: true, force: true });
 

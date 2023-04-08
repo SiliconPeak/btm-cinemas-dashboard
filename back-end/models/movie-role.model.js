@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../configs/db.config.js";
+import { Person } from "./person.model.js";
 
 
 
@@ -26,17 +27,17 @@ export const MovieRole = sequelize.define(
     }
 );
 
-// Role.hasMany(User, {
-//     foreignKey: "roleId",
-//     as: "user",
-//     allowNull: true,
-// });
+MovieRole.hasMany(Person, {
+    foreignKey: "roleId",
+    as: "person",
+    allowNull: true,
+});
 
-// User.belongsTo(Role, {
-//     foreignKey: "roleId",
-//     as: "role",
-//     allowNull: true,
+Person.belongsTo(MovieRole, {
+    foreignKey: "roleId",
+    as: "role",
+    allowNull: true,
 
-// });
+});
 
 // sequelize.sync({ alter: true, force: true });
