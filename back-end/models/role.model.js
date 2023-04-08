@@ -39,4 +39,4 @@ User.belongsTo(Role, {
 
 });
 
-//sequelize.sync({ alter: true, force: true });
+// sequelize.sync({ alter: true, force: true });

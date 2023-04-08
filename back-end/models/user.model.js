@@ -34,4 +34,4 @@ export const User = sequelize.define(
     //freezeTableName: true,
   }
 );
-//sequelize.sync({ alter: true, force: true });
+// sequelize.sync({ alter: true, force: true });

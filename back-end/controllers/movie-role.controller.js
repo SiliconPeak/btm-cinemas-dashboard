@@ -1,13 +1,13 @@
 import { apiErrorResponse, apiSuccessResponse, apiListResponse } from "../helpers/functions.js";
 import { MESSAGE } from "../helpers/response.message.js";
-import { Role } from "../models/role.model.js";
-import { User } from "../models/user.model.js";
+import { MovieRole } from "../models/movie-role.model.js";
 
 
 //Role List
-export const getAllRoles = async (req, res, next) => {
+export const getAlls = async (req, res, next) => {
   try {
-    let role = await Role.findAll({ include: [{ model: User, as: "user" }] });
+    // let role = await Role.findAll({ include: [{ model: User, as: "user" }] });
+    let role = await MovieRole.findAll();
     if (!role) return res.status(404).json(apiErrorResponse(404, MESSAGE.ROLE_NOT));
     res.status(200).json(apiListResponse(200, role, MESSAGE.ROLE));
   } catch (error) {
@@ -16,11 +16,11 @@ export const getAllRoles = async (req, res, next) => {
 };
 
 //Role Find By  Id
-export const getRolesById = async (req, res, next) => {
+export const getById = async (req, res, next) => {
   try {
     const id = req.params.id;
-    let role = await Role.findByPk(id, {
-      include: [{ model: User, as: "user" }],
+    let role = await MovieRole.findByPk(id, {
+      //include: [{ model: User, as: "user" }],
     });
     if (!role) return res.status(404).json(apiErrorResponse(404, MESSAGE.ROLE_NOT));
     res.status(200).json(apiListResponse(200, role, MESSAGE.ROLE));
@@ -29,8 +29,8 @@ export const getRolesById = async (req, res, next) => {
   }
 };
 
-//Create Roles
-export const createRoles = async (req, res, next) => {
+//Create MovieRoles
+export const create = async (req, res, next) => {
   try {
     const { title, status } = req.body;
     const data = {
@@ -38,9 +38,9 @@ export const createRoles = async (req, res, next) => {
       status: status,
     };
 
-    const checkRole = await Role.findOne({ where: { title } });
+    const checkRole = await MovieRole.findOne({ where: { title } });
     if (checkRole) return res.status(409).json(apiErrorResponse(409, MESSAGE.ROLE_DUPLICATE));
-    const role = await Role.create(data);
+    const role = await MovieRole.create(data);
     await role.save(role);
     res.status(200).json(apiSuccessResponse(200, MESSAGE.ROLE_ADD));
   } catch (error) {
@@ -48,8 +48,8 @@ export const createRoles = async (req, res, next) => {
   }
 };
 
-//Update Roles
-export const updateRoleById = async (req, res, next) => {
+//Update MovieRoles
+export const updateById = async (req, res, next) => {
   try {
     const id = req.params.id;
     const { title, status } = req.body;
@@ -57,13 +57,14 @@ export const updateRoleById = async (req, res, next) => {
       title: title,
       status: status
     }
-    const roleById = await Role.findByPk(id);
+    const roleById = await MovieRole.findByPk(id);
     if (!roleById) return res.status(404).json(apiErrorResponse(404, MESSAGE.ROLE_NOT));
 
-    const checkRole = await Role.findOne({ where: { title } });
+    const checkRole = await MovieRole.findOne({ where: { title } });
     if (checkRole) return res.status(409).json(apiErrorResponse(409, MESSAGE.ROLE_DUPLICATE));
 
-    const role = await Role.update(data, { where: { id: roleById.id } });
+    const role = await MovieRole.update(data, { where: { id: roleById.id } });
+
     if (!role) return res.status(404).json(apiErrorResponse(404, MESSAGE.ROLE_NOT_UPDATE));
     res.status(200).json(apiSuccessResponse(200, MESSAGE.ROLE_UPDATE));
   } catch (error) {
@@ -72,10 +73,10 @@ export const updateRoleById = async (req, res, next) => {
 };
 
 //Delete role
-export const deleteRole = async (req, res, next) => {
+export const deleteById = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const role = await Role.findByPk(id);
+    const role = await MovieRole.findByPk(id);
 
     if (!role) return res.status(404).json(apiErrorResponse(404, MESSAGE.ROLE_NOT));
     await role.destroy();
