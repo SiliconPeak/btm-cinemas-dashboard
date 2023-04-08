@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../configs/db.config.js";
-
+import { Movies } from "./movie.model.js";
 
 export const Genres = sequelize.define(
     "geners", {
@@ -22,14 +22,14 @@ export const Genres = sequelize.define(
     timestamps: true,
 });
 
-// Genres.hasMany(Movie, {
-//     foreignKey: 'generId',
-//     as: 'movie',
-//     allowNull: true
-// })
-// Movie.belongsTo(Genres, {
-//     foreignKey: 'generId',
-//     as: 'gener',
-//     allowNull: true
-// })
+Genres.hasMany(Movies, {
+    foreignKey: 'generId',
+    as: 'movie',
+    allowNull: true
+})
+Movies.belongsTo(Genres, {
+    foreignKey: 'generId',
+    as: 'gener',
+    allowNull: true
+})
 // sequelize.sync({ after: true, force: true });

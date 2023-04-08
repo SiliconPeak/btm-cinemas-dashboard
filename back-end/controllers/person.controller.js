@@ -94,14 +94,14 @@ export const updateById = async (req, res, next) => {
       data.profileImage = req.file.filename;
     }
 
-    const role = MovieRole.findOne();
-    const department = Department.findOne();
+    const role = MovieRole.findByPk(data.roleId);
+    const department = Department.findByPk(data.deleteById);
 
     data.roleId = role.id;
     data.deleteById = department.id;
 
     const personResponse = await Person.update(data, { where: { id: person.id } });
-    if (!personResponse) return res.status(404).json(apiErrorResponse(404, MESSAGE.DEPARTMENT_NOT_UPDATE));
+    if (!personResponse) return res.status(404).json(apiErrorResponse(404, MESSAGE.PERSON_NOT_UPDATE));
 
     if (person.profileImage && req.file) {
       deleteImage(person.profileImage);
