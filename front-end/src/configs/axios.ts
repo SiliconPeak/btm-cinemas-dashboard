@@ -14,11 +14,9 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.response.use(
   (response) => {
-    // console.log("Interceptors Response: ", response)
     return response.data;
   },
   (errorResponse) => {
-    // console.log("Interceptors Error: ", errorResponse)
     errorResponseStatus(errorResponse);
   }
 );

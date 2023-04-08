@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FC, ReactElement } from "../../lib/types";
 import { registerUser } from "../../services/user.service";
-import {redirect,useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import "./UserForm.css";
 const {Option} = Select;
 const {Title} = Typography

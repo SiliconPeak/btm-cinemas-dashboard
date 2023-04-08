@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 
-import { ToastContentProps, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 
 export const errorResponseStatus = (errResp: any) => {
   if (errResp.response.status === StatusCodes.INTERNAL_SERVER_ERROR) {
