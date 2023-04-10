@@ -1,4 +1,4 @@
-import {createRoutesFromElements,createBrowserRouter,Route,RouterProvider} from "react-router-dom";
+import {createRoutesFromElements,createBrowserRouter,Route,RouterProvider,Link} from "react-router-dom";
 import Layout from "./components/Layout";
 import Movies from "./pages/Movies";
 import User from "./pages/User";
@@ -22,7 +22,19 @@ const router = createBrowserRouter(
       <Route path="/genres" element={
           <Genres title="Genres List" icon={<ExpandAltOutlined/>} iconText="Add Genre" iconUrl="/genres/create"/>}
       />
-      <Route path="/genres/create" element={<GenreForm/>}/>
+      <Route path="/genres/create" element={
+          <GenreForm 
+            title="Create Genre" 
+            items={[
+              {
+                  title:<Link to="/genres">Genre</Link>
+              },
+              {
+                  title:"Create"
+              }
+            ]}
+          />}
+      />
       <Route path="/genres/edit/:id" element={<GenreEditForm/>}/>
     </Route>
   )
