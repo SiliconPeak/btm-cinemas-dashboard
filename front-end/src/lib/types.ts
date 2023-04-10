@@ -30,3 +30,10 @@ export interface  GenreCreateType {
   name:string;
   status:string;
 }
+export interface HOCFormProps {
+  title:string;
+  successMessage?:string;
+  items:any;
+  errorMessage?:string;
+  navigateAfterSubmission:string;
+}

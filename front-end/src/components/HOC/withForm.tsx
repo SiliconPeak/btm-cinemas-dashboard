@@ -1,20 +1,16 @@
 import { ComponentType,useState} from "react";
-import { ReactElement } from "../../lib/types";
+import { HOCFormProps } from "../../lib/types";
 import { Form, Typography, message,Breadcrumb } from "antd";
 import { useNavigate } from "react-router-dom";
 const {Title} = Typography;
 
-interface FormProps {
-    title:string;
-    successMessage?:string;
-    items:any
-}
-const withForm = <T extends FormProps>(
+//HOC TO IMPLEMENT THE REDUNDANT LOGIC TO ALMOST ALL FORMS IN MOVIE DASHBOARD
+const withForm = <T extends HOCFormProps>(
     WrappedComponent:ComponentType<T>,
     submitFn:Function
 ) => {
     const withForm = (props:T) => {
-        const {title,items,...rest} = props as T;
+        const {title,items,navigateAfterSubmission,...rest} = props as T;
         const [form] = Form.useForm();
         const [loading,setLoading] = useState<boolean>(false);
         const [messageApi,contextHolder] = message.useMessage();
@@ -25,7 +21,7 @@ const withForm = <T extends FormProps>(
         };
         const onFinish = (values:any) => {
             setLoading(true);
-            alert(JSON.stringify(values,null,2))
+           
             messageApi.open({
                 type:'loading',
                 content:'Submitting...',
@@ -34,18 +30,21 @@ const withForm = <T extends FormProps>(
                 const handleSubmit = async () => {
                     try {
                         const res = await submitFn(values);
+                        if(!res) {
+                            throw 'Error';
+                        }
                         message.success(props.successMessage || 'Submitted successfully',2,()=> {
                                 setLoading(false);
-                                navigate('/genres');
+                                navigate(navigateAfterSubmission);
                         })
                     }catch(err) {
-                        message.error('Something went wrong!!!',2);
+                        message.error(props.errorMessage || 'Something went wrong!!!',2);
                         setLoading(false);
                     }
                 };
                 handleSubmit();
             })
-        }
+        };
 
         return (
                 <div className="page__form--container ">
@@ -70,8 +69,8 @@ const withForm = <T extends FormProps>(
                         />
                     </div>
             </div>
-        )
-    }
+        );
+    };
     return withForm;
 };
 

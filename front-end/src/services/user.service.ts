@@ -25,9 +25,12 @@ export const registerUser = async (body: any) => {
       body: JSON.stringify(body),
     });
     const data = await response.json();
-    return data;
+    if(data && data.status === 200) {
+      return data;
+    }
+   
   } catch (err) {
-    alert(err);
+     alert('ERROR!!');
   }
 };
 

@@ -16,7 +16,22 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout/>}>
       <Route index element={<User title="Users List" icon={<UserOutlined/>} iconText="Add User" iconUrl="/users/create"/>}/>
-      <Route path="/users/create" element={<UserForm/>}/>
+      <Route path="/users/create" element={
+        <UserForm
+            title="Create User"
+            items={[
+              {
+                title:<Link to="/">Users</Link>
+              },
+              {
+                title:'Create'
+              }
+            ]}
+            successMessage="User created successfully!!"
+            errorMessage="Failed to create user!!"
+            navigateAfterSubmission="/"
+        />
+      }/>
       <Route path="/user/edit/:id" element={<UserEditForm/>}/>
       <Route path="/movies" element={<Movies/>}/>
       <Route path="/genres" element={
@@ -33,6 +48,9 @@ const router = createBrowserRouter(
                   title:"Create"
               }
             ]}
+            successMessage="Genre created successfully!!"
+            errorMessage="Failed to create genre!!"
+            navigateAfterSubmission="/genres"
           />}
       />
       <Route path="/genres/edit/:id" element={<GenreEditForm/>}/>
