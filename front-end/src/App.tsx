@@ -4,7 +4,7 @@ import Movies from "./pages/Movies";
 import User from "./pages/User";
 import './App.css';
 import { useEffect, useState } from "react";
-import UserForm from "./components/UserForm";
+import UserForm from "./components/Form/UserForm";
 import UserEditForm from "./components/UserForm/UserEditForm";
 import LoginSignup from "./components/Container/LoginSignup";
 import authService from "./services/auth.services";
