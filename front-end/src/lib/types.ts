@@ -25,9 +25,19 @@ export interface GenreColumnType {
   status:string;
   id:string;
 }
+export interface MovieRoleColumnType {
+  title:string;
+  status:string;
+  id:string;
+}
 
 export interface  GenreCreateType {
   name:string;
+  status:string;
+}
+
+export interface MovieRoleCreateType {
+  title:string;
   status:string;
 }
 export interface HOCFormProps {

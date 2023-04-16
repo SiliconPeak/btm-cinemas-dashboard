@@ -9,9 +9,12 @@ import UserEditForm from "./components/UserForm/UserEditForm";
 import LoginSignup from "./components/Container/LoginSignup";
 import authService from "./services/auth.services";
 import Genres from "./pages/Genres";
-import {ExpandAltOutlined, UserOutlined} from "@ant-design/icons";
+import {ExpandAltOutlined, UserOutlined,BorderlessTableOutlined} from "@ant-design/icons";
 import GenreForm from "./components/Form/GenreForm";
 import GenreEditForm from "./components/Form/GenreEditForm";
+import MovieRoles from "./pages/MovieRoles";
+import MovieRoleForm from "./components/Form/MovieRoleForm";
+import MovieRoleEditForm from "./components/Form/MovieRoleEditForm";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout/>}>
@@ -54,6 +57,31 @@ const router = createBrowserRouter(
           />}
       />
       <Route path="/genres/edit/:id" element={<GenreEditForm/>}/>
+      <Route path="/movie-roles" element={
+        <MovieRoles title="Movie Roles" icon={<BorderlessTableOutlined />} iconText="Add Movie Role" iconUrl="/movie-roles/create"/>
+      }/>
+      <Route
+         path="/movie-roles/create"
+         element={
+          <MovieRoleForm
+             title="Create Movie Role"
+             items={[
+              {
+                title:<Link to="/movie-roles">Movie Role</Link>
+              },
+              {
+                title:'Create'
+              }
+             ]}
+             successMessage="Movie role created successfully!!"
+             errorMessage="Failed to create movie role"
+             navigateAfterSubmission="/movie-roles"
+          />
+         }
+      />
+      <Route
+         path="/movie-roles/edit/:id" element={<MovieRoleEditForm/>}
+      />
     </Route>
   )
 );

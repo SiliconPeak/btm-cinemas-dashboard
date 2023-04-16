@@ -11,25 +11,25 @@ import {
 } from "antd";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import { useEffect, useState } from "react";
-import { genreServices } from "../../services/genre.services";
+import { movieRoleServices } from "../../services/movie-role.services";
 const {Title} = Typography;
 const {Option} = Select;
-const GenreEditForm =() => {
+const MovieRoleEditForm =() => {
     const [form] = Form.useForm();
     const [loading,setLoading] = useState<boolean>(false);
     const [messageApi,contextHolder] = message.useMessage();
-    let {id:genreId} = useParams();
+    let {id:moveRoleId} = useParams();
     const navigate = useNavigate();
     const onReset = () => {
         form.resetFields();
     }
     useEffect(() => {
-        const getGenre = async () => {
+        const getMovieRole = async () => {
             try {
-                const res = await genreServices.getGenreById(genreId);
+                const res = await movieRoleServices.getMovieRoleById(moveRoleId);
                 if(res.status === 200) {
                     form.setFieldsValue({
-                        name:res.data.name,
+                        title:res.data.title,
                         status:res.data.status
                     })
                 } else {
@@ -39,7 +39,7 @@ const GenreEditForm =() => {
                 alert(err);
             }
         };
-        getGenre();
+        getMovieRole();
     },[])
 
     const onFinish = (values:any) => {
@@ -49,21 +49,21 @@ const GenreEditForm =() => {
                 duration:2.5,
                 content:'Updating....'
             }).then(() => {
-                const editUser = async () => {
+                const editMovieRole = async () => {
                     try {
-                        const res = await genreServices.editGenre(genreId,values);
+                        const res = await movieRoleServices.editMovieRole(moveRoleId,values);
                         if(res && res.status === 200) {
-                            message.success('Genre updated successfully!',1,() => {
-                                navigate('/genres');
+                            message.success('Movie role updated successfully!',1,() => {
+                                navigate('/movie-roles');
                             })
                         } else {
-                            throw 'Genre not updated';
+                            throw 'Movie role not updated';
                         }
                     } catch(err) {
-                        message.error("Genre not updated",2);
+                        message.error("Movie role not updated",2);
                     }
                 };
-                editUser();
+                editMovieRole();
             })
          }
     }
@@ -74,7 +74,7 @@ const GenreEditForm =() => {
                 separator=">"
                 items={[
                     {
-                        title:<Link to="/">Genre</Link>
+                        title:<Link to="/movie-roles">Movie Role</Link>
                     },
                     {
                         title:'Edit'
@@ -85,7 +85,7 @@ const GenreEditForm =() => {
             <div className="page__form--body">
                 {contextHolder}
                 <div className="page_form-heading">
-                    <Title level={4}>Update Genre</Title>
+                    <Title level={4}>Update Movie Role</Title>
                 </div>
                 <Form
                   form={form}
@@ -95,9 +95,9 @@ const GenreEditForm =() => {
                     <Row gutter={[25,8]}>
                         <Col className="gutter-row" span={8}>
                             <Form.Item
-                                label="Name"
-                                name="name"
-                                rules={[{required:true,message:"Please enter name."}]}
+                                label="Title"
+                                name="title"
+                                rules={[{required:true,message:"Please enter title."}]}
                             >
                                 <Input size="small"/>
                             </Form.Item>
@@ -136,4 +136,4 @@ const GenreEditForm =() => {
     );
 };
 
-export default GenreEditForm;
+export default MovieRoleEditForm;

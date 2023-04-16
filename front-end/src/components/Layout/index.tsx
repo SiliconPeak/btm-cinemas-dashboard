@@ -3,7 +3,16 @@ import { Outlet,useNavigate,Link} from "react-router-dom";
 import type { FC, ReactElement } from "../../lib/types";
 import { NavigateFunction } from "../../lib/types";
 import {Avatar, Layout as AntLayout,Menu,Popover,Button} from "antd";
-import {KeyOutlined, LoginOutlined, MenuFoldOutlined, MenuUnfoldOutlined,ExpandAltOutlined, UserOutlined, VideoCameraOutlined} from "@ant-design/icons";
+import {
+    KeyOutlined, 
+    LoginOutlined, 
+    MenuFoldOutlined, 
+    MenuUnfoldOutlined,
+    ExpandAltOutlined, 
+    UserOutlined, 
+    VideoCameraOutlined,
+    BorderlessTableOutlined
+} from "@ant-design/icons";
 import authService from "../../services/auth.services";
 const {Header,Sider,Content} = AntLayout;
 const content:ReactElement = (
@@ -50,6 +59,11 @@ const Layout:FC = ():ReactElement => {
                             key:'/genres',
                             icon:<ExpandAltOutlined />,
                             label:'Genres'
+                        },
+                        {
+                            key:'/movie-roles',
+                            icon:<BorderlessTableOutlined/>,
+                            label:'Movie Roles'
                         }
                     ]}
                 />

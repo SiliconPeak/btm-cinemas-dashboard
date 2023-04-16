@@ -21,7 +21,6 @@ const withForm = <T extends HOCFormProps>(
         };
         const onFinish = (values:any) => {
             setLoading(true);
-           
             messageApi.open({
                 type:'loading',
                 content:'Submitting...',
