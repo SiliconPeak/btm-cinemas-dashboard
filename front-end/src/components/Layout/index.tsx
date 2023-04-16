@@ -11,7 +11,9 @@ import {
     ExpandAltOutlined, 
     UserOutlined, 
     VideoCameraOutlined,
-    BorderlessTableOutlined
+    BorderlessTableOutlined,
+    StrikethroughOutlined,
+    FrownOutlined
 } from "@ant-design/icons";
 import authService from "../../services/auth.services";
 const {Header,Sider,Content} = AntLayout;
@@ -64,6 +66,16 @@ const Layout:FC = ():ReactElement => {
                             key:'/movie-roles',
                             icon:<BorderlessTableOutlined/>,
                             label:'Movie Roles'
+                        },
+                        {
+                            key:'/department',
+                            icon:<StrikethroughOutlined />,
+                            label:'Department'
+                        },
+                        {
+                            key:'/person',
+                            icon:<FrownOutlined />,
+                            label:'Person'
                         }
                     ]}
                 />

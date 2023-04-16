@@ -9,12 +9,15 @@ import UserEditForm from "./components/UserForm/UserEditForm";
 import LoginSignup from "./components/Container/LoginSignup";
 import authService from "./services/auth.services";
 import Genres from "./pages/Genres";
-import {ExpandAltOutlined, UserOutlined,BorderlessTableOutlined} from "@ant-design/icons";
+import {ExpandAltOutlined, UserOutlined,BorderlessTableOutlined,StrikethroughOutlined} from "@ant-design/icons";
 import GenreForm from "./components/Form/GenreForm";
 import GenreEditForm from "./components/Form/GenreEditForm";
 import MovieRoles from "./pages/MovieRoles";
 import MovieRoleForm from "./components/Form/MovieRoleForm";
 import MovieRoleEditForm from "./components/Form/MovieRoleEditForm";
+import DepartmentForm from "./components/Form/DepartmentForm";
+import Department from "./pages/Department";
+import DepartmentEditForm from "./components/Form/DepartmentEditForm";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout/>}>
@@ -58,7 +61,7 @@ const router = createBrowserRouter(
       />
       <Route path="/genres/edit/:id" element={<GenreEditForm/>}/>
       <Route path="/movie-roles" element={
-        <MovieRoles title="Movie Roles" icon={<BorderlessTableOutlined />} iconText="Add Movie Role" iconUrl="/movie-roles/create"/>
+        <MovieRoles title="Movie Roles List" icon={<BorderlessTableOutlined />} iconText="Add Movie Role" iconUrl="/movie-roles/create"/>
       }/>
       <Route
          path="/movie-roles/create"
@@ -81,6 +84,40 @@ const router = createBrowserRouter(
       />
       <Route
          path="/movie-roles/edit/:id" element={<MovieRoleEditForm/>}
+      />
+      <Route
+        path="/department"
+        element={
+          <Department
+             title="Department List"
+             icon={<StrikethroughOutlined />}
+             iconUrl="/department/create"
+             iconText="Add department"
+          />
+        }
+      />
+      <Route
+        path="/department/create"
+        element={
+          <DepartmentForm
+             title="Create Department"
+             items={[
+              {
+                title:<Link to="/department">Department</Link>
+              },
+              {
+                title:'Create'
+              }
+             ]}
+             navigateAfterSubmission="/department"
+             errorMessage="Failed to create department"
+             successMessage="Department created successfully!!"
+          />
+        }
+      />
+      <Route
+        path="/department/edit/:id"
+        element={<DepartmentEditForm/>}
       />
     </Route>
   )

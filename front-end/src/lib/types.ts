@@ -40,6 +40,8 @@ export interface MovieRoleCreateType {
   title:string;
   status:string;
 }
+export interface DepartmentCreateType extends MovieRoleCreateType{};
+export interface DepartmentColumnType extends MovieRoleColumnType{};
 export interface HOCFormProps {
   title:string;
   successMessage?:string;
