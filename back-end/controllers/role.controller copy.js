@@ -58,7 +58,7 @@ export const updateRoleById = async (req, res, next) => {
       status: status
     }
     const roleById = await Role.findByPk(id);
-    if (!roleById) return res.status(404).json(apiErrorResponse(404, MESSAGE.ROLE_NOT));
+    if (!roleById) return req.status(404).json(apiErrorResponse(404, MESSAGE.ROLE_NOT));
 
     const checkRole = await Role.findOne({ where: { title } });
     if (checkRole) return res.status(409).json(apiErrorResponse(409, MESSAGE.ROLE_DUPLICATE));
