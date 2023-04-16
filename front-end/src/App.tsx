@@ -9,7 +9,13 @@ import UserEditForm from "./components/UserForm/UserEditForm";
 import LoginSignup from "./components/Container/LoginSignup";
 import authService from "./services/auth.services";
 import Genres from "./pages/Genres";
-import {ExpandAltOutlined, UserOutlined,BorderlessTableOutlined,StrikethroughOutlined} from "@ant-design/icons";
+import {
+  ExpandAltOutlined, 
+  UserOutlined,
+  BorderlessTableOutlined,
+  StrikethroughOutlined,
+  FrownOutlined
+} from "@ant-design/icons";
 import GenreForm from "./components/Form/GenreForm";
 import GenreEditForm from "./components/Form/GenreEditForm";
 import MovieRoles from "./pages/MovieRoles";
@@ -18,6 +24,9 @@ import MovieRoleEditForm from "./components/Form/MovieRoleEditForm";
 import DepartmentForm from "./components/Form/DepartmentForm";
 import Department from "./pages/Department";
 import DepartmentEditForm from "./components/Form/DepartmentEditForm";
+import PersonForm from "./components/Form/PersonForm";
+import Person from "./pages/Person";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout/>}>
@@ -118,6 +127,36 @@ const router = createBrowserRouter(
       <Route
         path="/department/edit/:id"
         element={<DepartmentEditForm/>}
+      />
+      <Route
+        path="/person/create"
+        element={
+          <PersonForm
+            title="Create Person"
+            items={[
+            {
+              title:<Link to="/person">Department</Link>
+            },
+            {
+              title:'Create'
+            }
+            ]}
+            navigateAfterSubmission="/person"
+            errorMessage="Failed to create person"
+            successMessage="Person created successfully!!"
+          />
+        }
+      />
+      <Route
+        path="/person"
+        element={
+          <Person
+             title="Persons List"
+             icon={<FrownOutlined />}
+             iconUrl="/person/create"
+             iconText="Add person"
+          />
+        }
       />
     </Route>
   )

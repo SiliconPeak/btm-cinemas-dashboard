@@ -60,7 +60,7 @@ const UserForm:FC = (props:any):ReactElement => {
                         name="email"
                         rules={[{required:true,message:"Please enter email."}]}
                         >
-                            <Input type="emai" size="small"/>
+                            <Input type="email" size="small"/>
                         </Form.Item>
                     </Col>
                     <Col span={8}>

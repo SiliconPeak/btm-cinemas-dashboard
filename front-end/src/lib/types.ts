@@ -49,3 +49,17 @@ export interface HOCFormProps {
   errorMessage?:string;
   navigateAfterSubmission:string;
 }
+
+export interface PersonCreateType {
+  name:string;
+  gender:string;
+  email:string;
+  contact:string;
+  birthdate:string;
+  deathdate:string;
+  birthPlace:string;
+  biography:string;
+  status:string;
+  roleId:string;
+  departmentId:string;
+}
