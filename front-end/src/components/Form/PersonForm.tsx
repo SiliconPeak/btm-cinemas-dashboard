@@ -6,12 +6,10 @@ import {
     Col,
     Select,
     DatePicker} from "antd";
-import { PersonCreateType, ReactElement } from "../../lib/types";
+import { ReactElement } from "../../lib/types";
 import { personServices } from "../../services/person.services";
 import withForm from "../HOC/withForm";
 const {Option} = Select;
-
-
 
 const PersonForm = (props:any):ReactElement => {
     return (

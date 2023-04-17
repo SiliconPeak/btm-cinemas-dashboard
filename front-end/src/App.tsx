@@ -26,6 +26,8 @@ import Department from "./pages/Department";
 import DepartmentEditForm from "./components/Form/DepartmentEditForm";
 import PersonForm from "./components/Form/PersonForm";
 import Person from "./pages/Person";
+import PersonEditForm from "./components/Form/PersonEditForm";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -157,6 +159,10 @@ const router = createBrowserRouter(
              iconText="Add person"
           />
         }
+      />
+      <Route
+         path="/person/edit/:id"
+         element={<PersonEditForm/>}
       />
     </Route>
   )

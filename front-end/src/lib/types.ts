@@ -63,3 +63,11 @@ export interface PersonCreateType {
   roleId:string;
   departmentId:string;
 }
+
+export interface PersonColumnType {
+  name:string;
+  email:string;
+  contact:string;
+  status:string;
+  id:string;
+}
