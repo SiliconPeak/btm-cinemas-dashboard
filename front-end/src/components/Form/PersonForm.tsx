@@ -6,10 +6,12 @@ import {
     Col,
     Select,
     DatePicker} from "antd";
-import { ReactElement } from "../../lib/types";
-import { departmentServices } from "../../services/department.services";
+import { PersonCreateType, ReactElement } from "../../lib/types";
+import { personServices } from "../../services/person.services";
 import withForm from "../HOC/withForm";
 const {Option} = Select;
+
+
 
 const PersonForm = (props:any):ReactElement => {
     return (
@@ -133,8 +135,7 @@ const PersonForm = (props:any):ReactElement => {
                             rules={[{required:true,message:"Please select department."}]}
                         >
                             <Select placeholder="Choose department"  size="small">
-                                <Option value="1">Production</Option>
-                                <Option value="2">Editing</Option>
+                                <Option value="2">Production</Option>
                             </Select>
                         </Form.Item>
                     </Col>
@@ -158,4 +159,4 @@ const PersonForm = (props:any):ReactElement => {
     );
 };
 
-export default withForm(PersonForm,departmentServices.createDepartment);
+export default withForm(PersonForm,personServices.createPerson);

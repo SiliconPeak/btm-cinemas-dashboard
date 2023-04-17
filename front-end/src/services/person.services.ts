@@ -82,7 +82,7 @@ const editPerson = async (id:any,body:any) => {
     }
 };
 
-export const movieRoleServices = {
+export const personServices = {
     getAll,
     createPerson,
     deletePerson,

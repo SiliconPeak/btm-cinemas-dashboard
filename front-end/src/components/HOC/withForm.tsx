@@ -21,8 +21,8 @@ const withForm = <T extends HOCFormProps>(
         };
         const onFinish = (values:any) => {
             setLoading(true);
-            alert(JSON.stringify(values,null,2));
-            return;
+            // alert(JSON.stringify(values,null,2));
+            // return;
             messageApi.open({
                 type:'loading',
                 content:'Submitting...',
