@@ -38,7 +38,7 @@ export const create = async (req, res, next) => {
       status: status,
     };
 
-    const checkRole = await MovieRole.findOne({ where: { title } });
+    const checkRole = await MovieRole.findOne({ where: { title: title } });
     if (checkRole) return res.status(409).json(apiErrorResponse(409, MESSAGE.ROLE_DUPLICATE));
     const role = await MovieRole.create(data);
     await role.save(role);

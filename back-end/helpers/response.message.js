@@ -44,6 +44,7 @@ export const MESSAGE = {
     MOVIE_UPDATE: "Movie has been updated",
     MOVIE_NOT_UPDATE: "Movie does not update",
     MOVIE_ADD: "Movie has been created",
+    MOVIE_ADD_ERROR: "Movie can not created",
     MOVIE_DUPLICATE: "Movie already exit",
 
     PERSON_FETCH: "Data fetch",

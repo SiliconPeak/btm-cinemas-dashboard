@@ -46,4 +46,4 @@ export const Movies = sequelize.define(
         timestamps: true
     }
 );
-sequelize.sync({ alter: true, force: true });
+// sequelize.sync({ alter: true, force: true });

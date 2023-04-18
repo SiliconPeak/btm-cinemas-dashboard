@@ -6,6 +6,7 @@ import genresRoute from "./genres.route.js";
 import movieRoleRoute from "./movie-role.route.js";
 import departmentRoute from "./department.route.js";
 import personRoute from "./person.route.js";
+import movieRoute from "./movie.route.js";
 
 const app = express();
 
@@ -16,5 +17,6 @@ app.use("/genres", genresRoute);
 app.use("/movie-role", movieRoleRoute);
 app.use("/department", departmentRoute);
 app.use("/person", personRoute);
+app.use("/movie", movieRoute);
 
 export default app;
