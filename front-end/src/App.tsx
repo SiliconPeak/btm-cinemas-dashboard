@@ -14,7 +14,8 @@ import {
   UserOutlined,
   BorderlessTableOutlined,
   StrikethroughOutlined,
-  FrownOutlined
+  FrownOutlined,
+  VideoCameraOutlined
 } from "@ant-design/icons";
 import GenreForm from "./components/Form/GenreForm";
 import GenreEditForm from "./components/Form/GenreEditForm";
@@ -27,7 +28,7 @@ import DepartmentEditForm from "./components/Form/DepartmentEditForm";
 import PersonForm from "./components/Form/PersonForm";
 import Person from "./pages/Person";
 import PersonEditForm from "./components/Form/PersonEditForm";
-
+import MovieForm from "./components/Form/MovieForm";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -50,7 +51,25 @@ const router = createBrowserRouter(
         />
       }/>
       <Route path="/user/edit/:id" element={<UserEditForm/>}/>
-      <Route path="/movies" element={<Movies/>}/>
+      <Route path="/movies" element={
+          <Movies title="Movies List" icon={<VideoCameraOutlined/>} iconText="Add Movie" iconUrl="/movie/create"/>
+      }/>
+      <Route path="/movie/create" element={
+        <MovieForm
+           title="Create Movie"
+           items={[
+            {
+              title:<Link to="/movies">Movie</Link>
+            },
+            {
+              title:"Create"
+            }
+           ]}
+           successMessage="Movie created successfully!!"
+           errorMessage="Failed to create movie!!"
+           navigateAfterSubmission="/movie"
+        />
+      }/>
       <Route path="/genres" element={
           <Genres title="Genres List" icon={<ExpandAltOutlined/>} iconText="Add Genre" iconUrl="/genres/create"/>}
       />

@@ -1,5 +1,5 @@
 import { FC, ReactElement } from "../../lib/types";
-
+import withPageListLayout from "../../components/HOC/withPageListLayout";
 const Movies:FC =  ():ReactElement => {
     return (
         <>
@@ -8,4 +8,4 @@ const Movies:FC =  ():ReactElement => {
     );
 };
 
-export default Movies;
+export default withPageListLayout(Movies);

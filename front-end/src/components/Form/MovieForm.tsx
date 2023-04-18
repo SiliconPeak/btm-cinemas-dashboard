@@ -13,7 +13,7 @@ import { personServices } from "../../services/person.services";
 import withForm from "../HOC/withForm";
 const {Option} = Select;
 
-const PersonForm = (props:any):ReactElement => {
+const MovieForm = (props:any):ReactElement => {
     return (
         <Form
             form={props.form}
@@ -159,4 +159,4 @@ const PersonForm = (props:any):ReactElement => {
     );
 };
 
-export default withForm(PersonForm,personServices.createPerson);
+export default withForm(MovieForm,personServices.createPerson);
