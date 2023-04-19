@@ -67,7 +67,7 @@ const router = createBrowserRouter(
            ]}
            successMessage="Movie created successfully!!"
            errorMessage="Failed to create movie!!"
-           navigateAfterSubmission="/movie"
+           navigateAfterSubmission="/movies"
         />
       }/>
       <Route path="/genres" element={

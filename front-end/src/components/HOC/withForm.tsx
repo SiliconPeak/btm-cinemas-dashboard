@@ -21,6 +21,7 @@ const withForm = <T extends HOCFormProps>(
         };
         const onFinish = (values:any) => {
             setLoading(true);
+            // console.log(values)
             // alert(JSON.stringify(values,null,2));
             // return;
             messageApi.open({
@@ -31,6 +32,7 @@ const withForm = <T extends HOCFormProps>(
                 const handleSubmit = async () => {
                     try {
                         const res = await submitFn(values);
+                        console.log(res)
                         if(!res) {
                             throw 'Error';
                         }

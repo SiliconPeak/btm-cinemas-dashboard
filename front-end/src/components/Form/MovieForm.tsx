@@ -6,10 +6,11 @@ import {
     Row,
     Col,
     Select,
-    DatePicker
+    DatePicker,
+    Checkbox
 } from "antd";
 import { ReactElement } from "../../lib/types";
-import { personServices } from "../../services/person.services";
+import { movieServices } from "../../services/movie.services";
 import withForm from "../HOC/withForm";
 const {Option} = Select;
 
@@ -32,24 +33,20 @@ const MovieForm = (props:any):ReactElement => {
                     </Col>
                     <Col className="gutter-row" span={8}>
                         <Form.Item
-                            label="Gender"
-                            name="gender"
-                            rules={[{required:true,message:"Please choose gender"}]}
+                            label="Original Name"
+                            name="original_name"
+                            rules={[{required:true,message:"Please enter original name."}]}
                         >
-                            <Select placeholder="Choose gender"  size="small">
-                                <Option value="male">Male</Option>
-                                <Option value="female">Female</Option>
-                                <Option value="other">Other</Option>
-                            </Select>
+                            <Input size="small"/>
                         </Form.Item>
                     </Col>
                     <Col className="gutter-row" span={8}>
                         <Form.Item
-                            label="Email"
-                            name="email"
+                            label="Language"
+                            name="language"
                             rules={[{required:true,message:"Please enter email."}]}
                         >
-                            <Input type="email" size="small"/>
+                            <Input  size="small"/>
                         </Form.Item>
                     </Col>
                    
@@ -57,28 +54,29 @@ const MovieForm = (props:any):ReactElement => {
                 <Row gutter={[25,8]}>
                     <Col className="gutter-row" span={8}>
                         <Form.Item
-                            label="Contact"
-                            name="contact"
-                            rules={[{required:true,message:"Please enter contact."}]}
+                            label="Duration"
+                            name="duration"
+                            rules={[{required:true,message:"Please enter duration."}]}
                         >
-                            <Input type="number" size="small"/>
+                            <Input size="small"/>
                         </Form.Item>
                     </Col>
-                    <Col className="gutter-row" span={8}>
+                    {/* <Col className="gutter-row" span={8}>
                         <Form.Item
-                            label="Birth Date"
-                            name="birthday"
-                            rules={[{required:true,message:"Please select birth date."}]}
+                            label="Release Date"
+                            name="releaseDate"
+                            rules={[{required:true,message:"Please select release date."}]}
                         >
                              <DatePicker/>
                         </Form.Item>
-                    </Col>
+                    </Col> */}
                     <Col className="gutter-row" span={8}>
                         <Form.Item
-                            label="Death Date"
-                            name="deathday"
+                            label="Overview"
+                            name="overview"
+                            rules={[{required:true,message:"Please enter duration."}]}
                         >
-                              <DatePicker/>
+                            <Input.TextArea size="small"/>
                         </Form.Item>
                     </Col>
 
@@ -86,20 +84,10 @@ const MovieForm = (props:any):ReactElement => {
                 <Row gutter={[25,8]}>
                     <Col className="gutter-row" span={8}>
                         <Form.Item
-                            label="Birth place"
-                            name="birthPlace"
-                            rules={[{required:true,message:"Please enter birth place."}]}
+                            name="adults"
+                            valuePropName="checked"
                         >
-                            <Input size="small"/>
-                        </Form.Item>
-                    </Col>
-                    <Col className="gutter-row" span={8}>
-                        <Form.Item
-                            label="biography"
-                            name="biography"
-                            rules={[{required:true,message:"Please enter biography."}]}
-                        >
-                            <Input.TextArea  size="small"/>
+                           <Checkbox>Is Adult</Checkbox>
                         </Form.Item>
                     </Col>
                     <Col className="gutter-row" span={8}>
@@ -114,31 +102,28 @@ const MovieForm = (props:any):ReactElement => {
                             </Select>
                         </Form.Item>
                     </Col>
+                    <Col className="gutter-row" span={8}>
+                        <Form.Item
+                            label="Poster Url"
+                            name="posterUrl"
+                            rules={[{required:true,message:"Please enter duration."}]}
+                        >
+                            <Input size="small"/>
+                        </Form.Item>
+                    </Col>
                 </Row>
                 <Row gutter={[25,8]}>
-                    <Col className="gutter-row" span={8}>
-                        <Form.Item
-                            label="Role"
-                            name="roleId"
-                            rules={[{required:true,message:"Please select role."}]}
-                        >
-                            <Select placeholder="Choose role"  size="small">
-                                <Option value="1">Actor</Option>
-                                <Option value="2">Pilot</Option>
-                            </Select>
-                        </Form.Item>
-                    </Col>
-                    <Col className="gutter-row" span={8}>
-                        <Form.Item
-                            label="Department"
-                            name="departmentId"
-                            rules={[{required:true,message:"Please select department."}]}
-                        >
-                            <Select placeholder="Choose department"  size="small">
-                                <Option value="2">Production</Option>
-                            </Select>
-                        </Form.Item>
-                    </Col>
+                        <Col className="gutter-row" span={8}>
+                            <Form.Item
+                                label="Genre"
+                                name="generId"
+                                rules={[{required:true,message:"Please enter status."}]}
+                            >
+                                <Select placeholder="Choose status"  size="small">
+                                    <Option value="1">Comedy</Option>
+                                </Select>
+                            </Form.Item>
+                        </Col>
                 </Row>
                 <Row gutter={[25,8]}>
                     <Col className="gutter-row" span={24} style={{textAlign:"right"}}>
@@ -159,4 +144,4 @@ const MovieForm = (props:any):ReactElement => {
     );
 };
 
-export default withForm(MovieForm,personServices.createPerson);
+export default withForm(MovieForm,movieServices.createMovie);
