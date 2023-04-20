@@ -71,3 +71,10 @@ export interface PersonColumnType {
   status:string;
   id:string;
 }
+export interface MovieColumnType {
+  name:string;
+  language:string;
+  duration:string;
+  status:string;
+  id:string;
+}

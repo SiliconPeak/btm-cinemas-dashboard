@@ -29,6 +29,7 @@ import PersonForm from "./components/Form/PersonForm";
 import Person from "./pages/Person";
 import PersonEditForm from "./components/Form/PersonEditForm";
 import MovieForm from "./components/Form/MovieForm";
+import MovieEditForm from "./components/Form/MovieEditForm";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -70,6 +71,7 @@ const router = createBrowserRouter(
            navigateAfterSubmission="/movies"
         />
       }/>
+      <Route path="/movie/edit/:id" element={<MovieEditForm/>}/>
       <Route path="/genres" element={
           <Genres title="Genres List" icon={<ExpandAltOutlined/>} iconText="Add Genre" iconUrl="/genres/create"/>}
       />
