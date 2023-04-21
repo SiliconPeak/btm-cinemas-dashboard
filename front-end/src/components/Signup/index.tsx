@@ -5,7 +5,7 @@ import { ReactElement } from "../../lib/types";
 const Signup = ():ReactElement => {
     const [form] = Form.useForm();
     const onFinish = (values:any) => {
-        alert(JSON.stringify(values,null,2));
+        // alert(JSON.stringify(values,null,2));
     }
     return (
         <div className="signup-form">
